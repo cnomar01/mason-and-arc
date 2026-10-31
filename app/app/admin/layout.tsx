@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LogOut,
   UserRound,
@@ -23,56 +23,63 @@ import {
 import { useEffect, useState } from "react";
 import LegacyStorageMigration from "@/components/core/LegacyStorageMigration";
 
-const navigation = [
-  { label: "Overview", href: "/app/admin" },
-  { label: "Projects", href: "/app/admin/projects" },
-  { label: "Website Content", href: "/app/admin/website-projects" },
-  { label: "Clients", href: "/app/admin/clients" },
-  { label: "Team", href: "/app/admin/team" },
-  { label: "Intelligence", href: "/app/admin/intelligence" },
-  { label: "AI Studio OS", href: "/app/admin/ai" },
-  { label: "Project Brain", href: "/app/admin/brain" },
-  { label: "AI Agents", href: "/app/admin/agents" },
-  { label: "AI Actions", href: "/app/admin/agents/actions" },
-  { label: "Timesheets", href: "/app/admin/timesheets" },
+const navigationGroups = [
   {
-    label: "System Completeness",
-    href: "/app/admin/completeness",
+    label: "Studio",
+    items: [
+      { label: "Overview", href: "/app/admin" },
+      { label: "Projects", href: "/app/admin/projects" },
+      { label: "Clients", href: "/app/admin/clients" },
+      { label: "Team", href: "/app/admin/team" },
+      { label: "Tasks", href: "/app/admin/tasks" },
+      { label: "Calendar", href: "/app/admin/calendar" },
+      { label: "Messages", href: "/app/admin/messages" },
+      { label: "Website Content", href: "/app/admin/website-projects" },
+    ],
   },
   {
-    label: "Operations Hub",
-    href: "/app/admin/operations-hub",
+    label: "Project Delivery",
+    items: [
+      { label: "Construction OS", href: "/app/admin/construction" },
+      { label: "Site Intelligence", href: "/app/admin/site" },
+      { label: "Approvals", href: "/app/admin/approvals" },
+      { label: "Files", href: "/app/admin/files" },
+      { label: "Transmittals", href: "/app/admin/files/transmittals" },
+      { label: "Timesheets", href: "/app/admin/timesheets" },
+      { label: "Reports", href: "/app/admin/reports" },
+    ],
   },
   {
-    label: "Command Center",
-    href: "/app/admin/command-center",
+    label: "Operations & Finance",
+    items: [
+      { label: "Operations Hub", href: "/app/admin/operations-hub" },
+      { label: "Operations OS", href: "/app/admin/operations" },
+      { label: "Command Center", href: "/app/admin/command-center" },
+      { label: "Finance", href: "/app/admin/finance" },
+    ],
   },
   {
-    label: "Construction OS",
-    href: "/app/admin/construction",
+    label: "Intelligence & AI",
+    items: [
+      { label: "Intelligence", href: "/app/admin/intelligence" },
+      { label: "Project Brain", href: "/app/admin/brain" },
+      { label: "AI Studio OS", href: "/app/admin/ai" },
+      { label: "AI Agents", href: "/app/admin/agents" },
+      { label: "AI Actions", href: "/app/admin/agents/actions" },
+      { label: "System Completeness", href: "/app/admin/completeness" },
+    ],
   },
   {
-    label: "Operations OS",
-    href: "/app/admin/operations",
+    label: "Administration",
+    items: [
+      { label: "Notifications", href: "/app/admin/notifications" },
+      { label: "Security", href: "/app/admin/security" },
+      { label: "Settings", href: "/app/admin/settings" },
+    ],
   },
-  { label: "Reports", href: "/app/admin/reports" },
-  { label: "Approvals", href: "/app/admin/approvals" },
-  { label: "Tasks", href: "/app/admin/tasks" },
-  { label: "Files", href: "/app/admin/files" },
-  {
-    label: "Transmittals",
-    href: "/app/admin/files/transmittals",
-  },
-  { label: "Site Intelligence", href: "/app/admin/site" },
-  { label: "Messages", href: "/app/admin/messages" },
-  { label: "Finance", href: "/app/admin/finance" },
-  {
-    label: "Notifications",
-    href: "/app/admin/notifications",
-  },
-  { label: "Security", href: "/app/admin/security" },
-  { label: "Settings", href: "/app/admin/settings" },
-];
+] as const;
+
+const navigation = navigationGroups.flatMap((group) => group.items);
 
 export default function AdminLayout({
   children,
@@ -92,6 +99,10 @@ function AdminShell({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
+  const activeNav = navigation
+    .filter((item) => pathname === item.href || pathname.startsWith(`${item.href}/`))
+    .sort((a, b) => b.href.length - a.href.length)[0]?.href;
 
   const [user, setUser] = useState<AuthUser | null>(null);
   const [unreadNotifications, setUnreadNotifications] =
@@ -156,7 +167,7 @@ function AdminShell({
       <LegacyStorageMigration />
       {/* Desktop Sidebar */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col overflow-hidden border-r border-white/10 bg-[#111111] p-5 lg:flex">
-        {/* Logo */}
+        {/* Approved primary brand mark: do not repeat the name as UI text. */}
         <div className="flex shrink-0 items-center border-b border-white/10 px-3 pb-5 pt-3">
           <Link href="/app/admin">
             <img
@@ -173,45 +184,41 @@ function AdminShell({
             Workspace
           </p>
 
-          <nav className="mt-4 space-y-1 pb-3">
-            {navigation.map((item) => {
-              const isNotifications =
-                item.label === "Notifications";
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="group flex items-center justify-between rounded-lg px-3 py-3 text-xs text-white/45 transition hover:bg-white/[0.05] hover:text-white"
-                >
-                  <span className="flex items-center gap-3">
-                    {isNotifications && (
-                      <Bell
-                        size={13}
-                        className="text-white/30 transition group-hover:text-white/60"
-                      />
-                    )}
-
-                    <span>{item.label}</span>
-                  </span>
-
-                  <span className="flex items-center gap-2">
-                    {isNotifications &&
-                      unreadNotifications > 0 && (
-                        <span className="min-w-5 rounded-full border border-white/15 px-1.5 py-0.5 text-center text-[8px] text-white/60">
-                          {unreadNotifications > 99
-                            ? "99+"
-                            : unreadNotifications}
+          <nav className="mt-5 space-y-7 pb-3" aria-label="Studio workspace">
+            {navigationGroups.map((group) => (
+              <div key={group.label}>
+                <p className="px-3 text-[9px] uppercase tracking-[0.2em] text-white/35">
+                  {group.label}
+                </p>
+                <div className="mt-2 space-y-0.5">
+                  {group.items.map((item) => {
+                    const isNotifications = item.label === "Notifications";
+                    const active = activeNav === item.href;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        aria-current={active ? "page" : undefined}
+                        className={\`group flex min-h-10 items-center justify-between rounded-md border-s-2 px-3 py-2.5 text-xs transition-colors \${active ? "border-[#4F6B7A] bg-white/[0.07] text-white" : "border-transparent text-white/55 hover:bg-white/[0.05] hover:text-white"}\`}
+                      >
+                        <span className="flex items-center gap-3">
+                          {isNotifications && <Bell size={13} aria-hidden="true" className="text-white/50" />}
+                          <span>{item.label}</span>
                         </span>
-                      )}
-
-                    <span className="text-white/15 transition group-hover:text-white/50">
-                      →
-                    </span>
-                  </span>
-                </Link>
-              );
-            })}
+                        <span className="flex items-center gap-2">
+                          {isNotifications && unreadNotifications > 0 && (
+                            <span className="min-w-5 rounded-full border border-white/20 px-1.5 py-0.5 text-center text-[8px] text-white/80">
+                              {unreadNotifications > 99 ? "99+" : unreadNotifications}
+                            </span>
+                          )}
+                          <span aria-hidden="true" className="text-white/25 transition group-hover:text-white/70">→</span>
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </nav>
         </div>
 
@@ -259,16 +266,6 @@ function AdminShell({
             </button>
           </div>
 
-          {/* Workspace */}
-          <div className="mt-3 rounded-xl border border-white/10 p-4">
-            <p className="text-[9px] uppercase tracking-[0.2em] text-white/25">
-              Workspace
-            </p>
-
-            <p className="mt-2 text-xs text-white/60">
-              Mason & Arc Studio
-            </p>
-          </div>
         </div>
       </aside>
 

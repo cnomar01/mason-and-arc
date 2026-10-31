@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import LetsCreateCTA from "@/components/shared/LetsCreateCTA";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 
 const content = {
@@ -21,9 +21,6 @@ const content = {
     approachLabel: "Our point of view",
     approachTitle: "One idea, carried through.",
     approach: "We connect the space, the identity and the way a project is communicated, so every decision belongs to the same vision. We believe the strongest work feels considered, coherent and built with intent.",
-    ctaLabel: "Start a conversation",
-    ctaTitle: "Let's create.",
-    ctaLink: "Get in touch",
   },
   ar: {
     eyebrow: "عن الاستوديو",
@@ -42,9 +39,6 @@ const content = {
     approachLabel: "وجهة نظرنا",
     approachTitle: "فكرة واحدة، تمتد إلى كل تفصيلة.",
     approach: "نربط المكان بالهوية وطريقة تقديم المشروع، ليكون كل قرار جزءًا من رؤية واحدة. نؤمن أن أفضل الأعمال هي التي تتميز بالوضوح والاتساق والعناية بالتنفيذ.",
-    ctaLabel: "لنبدأ الحوار",
-    ctaTitle: "لنصنع شيئًا معًا.",
-    ctaLink: "تواصل معنا",
   },
   it: {
     eyebrow: "Lo studio",
@@ -63,9 +57,6 @@ const content = {
     approachLabel: "Il nostro punto di vista",
     approachTitle: "Un’idea, portata fino in fondo.",
     approach: "Connettiamo spazio, identità e comunicazione affinché ogni decisione appartenga alla stessa visione. Crediamo in un lavoro curato, coerente e realizzato con intenzione.",
-    ctaLabel: "Iniziamo a parlare",
-    ctaTitle: "Creiamo insieme.",
-    ctaLink: "Contattaci",
   },
 } as const;
 
@@ -122,19 +113,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-28 pt-16 sm:px-8 md:px-10 md:pb-36 lg:px-16">
-        <div className="grid gap-10 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr]">
-          <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">{copy.ctaLabel}</p>
-          <div>
-            <h2 className="text-[clamp(3.75rem,9vw,9rem)] font-light leading-[.93] tracking-[-.055em]">
-              {copy.ctaTitle}
-            </h2>
-            <Link href="/contact" className="mt-10 inline-flex items-center gap-5 border-b border-neutral-500 pb-2 text-[10px] uppercase tracking-[.18em] transition-opacity hover:opacity-50">
-              {copy.ctaLink} <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <LetsCreateCTA />
     </main>
   );
 }

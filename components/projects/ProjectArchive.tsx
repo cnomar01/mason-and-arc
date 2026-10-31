@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import LetsCreateCTA from "@/components/shared/LetsCreateCTA";
 import { localizedYear, projectCopy, useLocale } from "@/components/i18n/LocaleProvider";
 import type { WebsiteProject } from "@/lib/server/websiteProjects";
 
@@ -48,6 +49,7 @@ export default function ProjectArchive({ projects, canEdit }: { projects: Websit
           {!projects.length && <div className="py-24 text-center text-sm text-neutral-500">{copy.emptyProjects}</div>}
         </div>
       </section>
+      <LetsCreateCTA />
     </main>
   );
 }

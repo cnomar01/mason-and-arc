@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import LetsCreateCTA from "@/components/shared/LetsCreateCTA";
 import Reveal from "@/components/animations/Reveal";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 
@@ -92,5 +93,6 @@ export default function ServicesHero() {
         ))}
       </div>
     </section>
+    <LetsCreateCTA />
   </main>;
 }

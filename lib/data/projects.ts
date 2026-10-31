@@ -64,9 +64,9 @@ export const cityEdgeSections = [
     eyebrow: emptyText,
     title: { en: "Status", ar: "الحالة", it: "Stato" },
     body: {
-      en: "Ongoing\nStarted 2025",
-      ar: "جارٍ\nبدأ في ٢٠٢٥",
-      it: "In corso\nAvviato nel 2025",
+      en: "Ongoing\nStarted 2024",
+      ar: "جارٍ\nبدأ في ٢٠٢٤",
+      it: "In corso\nAvviato nel 2024",
     },
     hero_statement: emptyText,
     layout: "editorial" as const,
@@ -125,7 +125,7 @@ export const projects = [
     slug: "city-edge",
     title: "City Edge",
     location: "Fayoum City, Egypt",
-    year: "2025 — Ongoing",
+    year: "2024 — Ongoing",
 
     image: "/images/projects/city-edge/city-edge-exterior-wip.jpeg",
 

@@ -59,7 +59,7 @@ export default function Hero({ imageUrl = "/images/hero.png" }: { imageUrl?: str
       <div ref={imageRef} className="hero-image-reveal absolute inset-0 md:inset-[-2%] md:will-change-transform">
         <Image
           src={imageUrl}
-          alt={locale === "ar" ? "مشهد معماري من أعمال Mason & Arc" : locale === "it" ? "Architettura dello studio Mason & Arc" : "Mason & Arc architecture"
+          alt={locale === "ar" ? "مشهد معماري من أعمال Mason & Arc" : locale === "it" ? "Architettura dello studio Mason & Arc" : "Mason & Arc architecture"}
           fill
           priority
           unoptimized

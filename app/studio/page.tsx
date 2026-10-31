@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import StudioHero from "@/components/studio/StudioHero";
 import Philosophy from "@/components/studio/Philosophy";
 import Process from "@/components/studio/Process";
+import LetsCreateCTA from "@/components/shared/LetsCreateCTA";
 
 export const metadata: Metadata = {
   title: "Studio",
@@ -15,6 +16,7 @@ export default function StudioPage() {
       <StudioHero />
       <Philosophy />
       <Process />
+      <LetsCreateCTA />
     </main>
   );
 }

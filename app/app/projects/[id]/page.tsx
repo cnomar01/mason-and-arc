@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   CheckCircle2,
   FileText,
+  Images,
   FolderOpen,
   MessageSquare,
   Activity,
@@ -106,27 +107,39 @@ export default function ClientProjectPage() {
           ))}
         </section>
 
-        <section className="mt-10 grid gap-4 md:grid-cols-4">
+        <section className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           <PortalLink
-            href={`/app/projects/${project.id}/drawings`}
+            href={"/app/projects/" + project.id + "/drawings"}
             icon={<FolderOpen size={19} />}
             title="Drawings & Files"
-            text="Review project files and latest revisions."
+            text="See approved drawings and current revisions."
           />
           <PortalLink
-            href={`/app/projects/${project.id}/approvals`}
+            href={"/app/projects/" + project.id + "/renders"}
+            icon={<Images size={19} />}
+            title="Renders & Visualization"
+            text="Access approved images and visual deliverables."
+          />
+          <PortalLink
+            href={"/app/projects/" + project.id + "/documents"}
+            icon={<FileText size={19} />}
+            title="Documents & Deliverables"
+            text="Download issued documents, brand assets and presentations."
+          />
+          <PortalLink
+            href={"/app/projects/" + project.id + "/approvals"}
             icon={<CheckCircle2 size={19} />}
             title="Approvals"
-            text="Review and follow approval activity."
+            text="Review real submissions and record decisions."
           />
           <PortalLink
-            href={`/app/projects/${project.id}/messages`}
+            href={"/app/projects/" + project.id + "/messages"}
             icon={<MessageSquare size={19} />}
             title="Messages"
-            text="Communicate with Mason & Arc."
+            text="Communicate with the project team."
           />
           <PortalLink
-            href={`/app/projects/${project.id}/activity`}
+            href={"/app/projects/" + project.id + "/activity"}
             icon={<Activity size={19} />}
             title="Activity"
             text="See the latest project activity and decisions."

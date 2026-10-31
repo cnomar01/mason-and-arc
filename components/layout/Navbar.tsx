@@ -11,7 +11,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { locale, setLocale, copy } = useLocale();
   // Keep the logo and menu visible on light pages and on the black menu overlay.
-  const whiteChrome = pathname === "/" || open;
+  const whiteChrome = pathname === "/" || pathname.startsWith("/projects/") || open;
 
   useEffect(() => {
     if (!open) return;

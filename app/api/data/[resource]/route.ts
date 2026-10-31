@@ -524,6 +524,8 @@ function scope(
 
       if (key === "files") {
         bind("r.visibility='Client'");
+        bind("r.status='Approved'");
+        bind("r.is_current=true");
       }
 
       if (key === "project_updates") {

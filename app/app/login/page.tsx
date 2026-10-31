@@ -99,7 +99,7 @@ export default function LoginPage() {
 
             <div className="mb-8">
               <p className="text-[9px] uppercase tracking-[0.3em] text-white/25">
-                Mason & Arc
+                Workspace access
               </p>
 
               <h1 className="mt-2 text-2xl font-medium tracking-tight">
@@ -107,7 +107,7 @@ export default function LoginPage() {
               </h1>
 
               <p className="mt-2 text-xs leading-5 text-white/30">
-                Access the Mason & Arc Digital Studio OS.
+                Private access to projects, files and studio operations.
               </p>
             </div>
 
@@ -192,7 +192,7 @@ export default function LoginPage() {
           </div>
 
           <p className="mt-8 text-center text-[9px] uppercase tracking-[0.2em] text-white/15">
-            Mason & Arc Digital Studio OS
+            Private studio workspace
           </p>
 
         </div>

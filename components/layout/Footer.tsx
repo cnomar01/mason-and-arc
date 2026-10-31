@@ -7,7 +7,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import SecondaryLogo from "@/components/shared/SecondaryLogo";
 
 export default function Footer() {
-  const { copy } = useLocale();
+  const { locale, copy } = useLocale();
   const isContactPage = usePathname() === "/contact";
   return (
     <footer className="bg-[#f8f7f4] text-neutral-900">
@@ -102,14 +102,14 @@ export default function Footer() {
                 href="tel:+201044007555"
                 className="transition-opacity hover:opacity-50"
               >
-                +20 10 440 07555
+                <span dir="ltr" className="inline-block">+20 10 440 07555</span>
               </a>
 
               <a
                 href="tel:+393200534654"
                 className="transition-opacity hover:opacity-50"
               >
-                +39 320 053 4654
+                <span dir="ltr" className="inline-block">+39 320 053 4654</span>
               </a>
 
               <a href="https://wa.me/201044007555" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-50">
@@ -147,9 +147,9 @@ export default function Footer() {
                 className="block h-[11px] w-auto shrink-0 object-contain brightness-0 opacity-[0.48]"
               />
             </Link>
-            <span className="whitespace-nowrap">{copy.rights}</span>
+            <span lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="whitespace-nowrap">{copy.rights}</span>
           </div>
-          <span dir="ltr" className="text-neutral-500 md:text-right">
+          <span lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="text-neutral-500 text-start md:text-end">
             {copy.heroBuild} {copy.heroExperience}
           </span>
         </div>

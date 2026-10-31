@@ -147,7 +147,7 @@ export default function Footer() {
                 className="block h-[11px] w-auto shrink-0 object-contain brightness-0 opacity-[0.48]"
               />
             </Link>
-            <span className="whitespace-nowrap">{copy.rights}</span>
+            <span lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="whitespace-nowrap">{copy.rights}</span>
           </div>
           <span lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="text-neutral-500 text-start md:text-end">
             {copy.heroBuild} {copy.heroExperience}

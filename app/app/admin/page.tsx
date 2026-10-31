@@ -73,9 +73,9 @@ export default function AdminDashboard() {
       <div className="mx-auto max-w-7xl">
         <header className="flex flex-col justify-between gap-4 border-b border-white/10 pb-7 md:flex-row md:items-end">
           <div>
-            <div className="text-xs uppercase tracking-[0.25em] text-white/30">Mason & Arc</div>
-            <h1 className="mt-2 text-3xl font-semibold">Studio Command Center</h1>
-            <p className="mt-2 text-sm text-white/40">Live operational overview from the shared studio database.</p>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-white/45">Workspace / Overview</div>
+            <h1 className="mt-2 text-3xl font-light tracking-[-0.035em] sm:text-4xl">Studio Overview</h1>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-white/50">Projects, people, deliverables, approvals and finances — a clear picture of the practice.</p>
           </div>
           <div className="flex items-center gap-3">
             <button type="button" onClick={() => void load(true)} disabled={refreshing} aria-label="Refresh studio overview" className="rounded-xl border border-white/15 p-2.5 text-white/55 transition hover:bg-white/[.05] hover:text-white disabled:opacity-50">

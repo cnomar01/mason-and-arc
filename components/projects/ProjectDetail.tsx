@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import CityEdgeCaseStudy from "./CityEdgeCaseStudy";
 import Link from "next/link";
 import { localizedText, localizedYear, projectCopy, useLocale } from "@/components/i18n/LocaleProvider";
 import type { WebsiteProject, WebsiteProjectSectionImage } from "@/lib/server/websiteProjects";
@@ -18,6 +19,10 @@ function SectionImages({ images, title, locale, layout }: { images: WebsiteProje
 }
 
 export default function ProjectDetail({ project }: { project: WebsiteProject }) {
+  return project.slug === "city-edge" ? <CityEdgeCaseStudy project={project} /> : <GenericProjectDetail project={project} />;
+}
+
+function GenericProjectDetail({ project }: { project: WebsiteProject }) {
   const { locale, copy } = useLocale(); const translated = projectCopy(project, locale); const sections = project.content_sections.filter((section) => section.is_visible);
   return <main className="min-w-0 w-full overflow-x-clip bg-black text-white">
     <section className="relative min-h-[100svh] overflow-hidden"><Image src={project.image_url} alt={translated.title} fill priority unoptimized sizes="100vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/10" /><div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-10 md:px-10 md:pb-14 lg:px-16"><div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"><div><p className="mb-5 text-[9px] uppercase tracking-[.3em] text-white/60">{translated.category}</p><h1 className={`max-w-[1200px] break-words [overflow-wrap:anywhere] uppercase leading-[.9] tracking-[-.025em] md:leading-[.82] md:tracking-[-.035em] ${locale === "ar" ? "font-[var(--font-arabic)] text-[clamp(2.3rem,10vw,9.3rem)] font-light" : "font-[var(--font-display)] text-[clamp(2.5rem,10vw,9.4rem)]"}`}>{translated.title}</h1></div><div className="text-[10px] uppercase tracking-[.2em] text-white/65 lg:text-end"><p>{translated.location}</p><p className="mt-2">{localizedYear(project.year, locale)}</p></div></div></div></section>

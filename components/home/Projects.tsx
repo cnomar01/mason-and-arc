@@ -109,8 +109,8 @@ export default function Projects({ projects }: { projects: WebsiteProject[] }) {
                   tracking-[-0.055em]
                   sm:text-[80px]
                   md:text-[105px]
-                  lg:text-[135px]
-                  xl:text-[160px]
+                  lg:text-[110px]
+                  xl:text-[128px]
                 "
               >
                 {copy.featuredTitle1}
@@ -141,10 +141,10 @@ export default function Projects({ projects }: { projects: WebsiteProject[] }) {
 
         <div
           className="
-            mt-28
+            mt-16
             border-t
             border-neutral-300
-            md:mt-40
+            md:mt-24
           "
         >
           {projects.map((project, index) => {

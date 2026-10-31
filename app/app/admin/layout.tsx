@@ -199,7 +199,7 @@ function AdminShell({
                         key={item.href}
                         href={item.href}
                         aria-current={active ? "page" : undefined}
-                        className={\`group flex min-h-10 items-center justify-between rounded-md border-s-2 px-3 py-2.5 text-xs transition-colors \${active ? "border-[#4F6B7A] bg-white/[0.07] text-white" : "border-transparent text-white/55 hover:bg-white/[0.05] hover:text-white"}\`}
+                        className={`group flex min-h-10 items-center justify-between rounded-md border-s-2 px-3 py-2.5 text-xs transition-colors ${active ? "border-[#4F6B7A] bg-white/[0.07] text-white" : "border-transparent text-white/55 hover:bg-white/[0.05] hover:text-white"}`}
                       >
                         <span className="flex items-center gap-3">
                           {isNotifications && <Bell size={13} aria-hidden="true" className="text-white/50" />}

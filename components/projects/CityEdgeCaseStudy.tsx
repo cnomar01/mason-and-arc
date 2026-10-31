@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import LetsCreateCTA from "@/components/shared/LetsCreateCTA";
 import { localizedText, localizedYear, projectCopy, useLocale } from "@/components/i18n/LocaleProvider";
 import type { WebsiteProject } from "@/lib/server/websiteProjects";
 
@@ -24,10 +25,6 @@ const editorialCopy = {
     scopeTitle: "From concept to detail.",
     supervisionLabel: "Execution supervision",
     extraLabel: "Project imagery",
-    closingLabel: "Have a project in mind?",
-    closingTitle: "Let's create.",
-    closingAction: "Start a conversation",
-    returnLabel: "Back to all projects",
   },
   ar: {
     back: "كل المشروعات",
@@ -47,10 +44,6 @@ const editorialCopy = {
     scopeTitle: "من الفكرة إلى التفاصيل.",
     supervisionLabel: "الإشراف على التنفيذ",
     extraLabel: "صور المشروع",
-    closingLabel: "عندك مشروع جديد؟",
-    closingTitle: "لنصمّم معًا.",
-    closingAction: "ابدأ الحوار",
-    returnLabel: "العودة إلى المشروعات",
   },
   it: {
     back: "Tutti i progetti",
@@ -70,10 +63,6 @@ const editorialCopy = {
     scopeTitle: "Dall'idea al dettaglio.",
     supervisionLabel: "Supervisione della realizzazione",
     extraLabel: "Immagini del progetto",
-    closingLabel: "Hai un progetto in mente?",
-    closingTitle: "Creiamo insieme.",
-    closingAction: "Inizia una conversazione",
-    returnLabel: "Torna ai progetti",
   },
 } as const;
 
@@ -227,20 +216,7 @@ export default function CityEdgeCaseStudy({ project }: { project: WebsiteProject
         </section>
       )}
 
-      <section className="bg-[#4F6B7A] px-6 pb-28 pt-24 text-white sm:px-8 md:px-10 md:pb-36 md:pt-32 lg:px-16">
-        <div className="grid gap-9 border-t border-white/30 pt-7 lg:grid-cols-[.34fr_1.66fr] lg:gap-12">
-          <p className="text-[10px] tracking-[.16em] text-white/80">{copy.closingLabel}</p>
-          <div>
-            <h2 className={titleClass + " max-w-5xl text-[clamp(3.5rem,9vw,9rem)]"}>{copy.closingTitle}</h2>
-            <Link href="/contact" className="mt-10 inline-flex items-center gap-5 border-b border-white/70 pb-3 text-[10px] uppercase tracking-[.16em] text-white transition-opacity hover:opacity-60">
-              {copy.closingAction} <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </div>
-        <Link href="/projects" className="mt-20 inline-flex items-center gap-3 text-[10px] uppercase tracking-[.16em] text-white/75 transition-colors hover:text-white">
-          <span aria-hidden="true">←</span> {copy.returnLabel}
-        </Link>
-      </section>
+      <LetsCreateCTA variant="project" backToProjects />
     </main>
   );
 }

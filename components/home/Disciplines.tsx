@@ -44,12 +44,39 @@ const content = {
 } as const;
 
 export default function Disciplines() {
-  const { locale } = useLocale(); const copy = content[locale];
-  return <section className="bg-[#f8f7f4] px-6 py-24 text-neutral-900 sm:px-8 md:px-10 md:py-36 lg:px-16">
-    <div className="grid gap-10 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr]">
-      <Reveal><p className="text-[9px] uppercase tracking-[.35em] text-neutral-400">{copy.label}</p></Reveal>
-      <Reveal><div><h2 className="text-[clamp(3.5rem,9vw,8rem)] font-extralight leading-[.86] tracking-[-.055em]">{copy.title[0]}<br />{copy.title[1]}</h2><p className="mt-10 max-w-2xl text-base font-light leading-8 text-neutral-600">{copy.intro}</p></div></Reveal>
-    </div>
-    <div className="mt-20 border-t border-neutral-300 md:mt-28">{copy.items.map((item, index) => <Reveal key={item[0]}><Link href={`/services#discipline-${index + 1}`} className="group grid gap-5 border-b border-neutral-300 py-9 md:grid-cols-[60px_.85fr_1fr_40px] md:gap-8 md:py-12"><span className="text-[9px] tracking-[.25em] text-[#4F6B7A]">0{index + 1}</span><h3 className={`${locale === "ar" ? "text-3xl md:text-4xl" : "text-3xl md:text-5xl"} font-light leading-[1.02] tracking-[-.04em] transition-transform duration-500 group-hover:translate-x-2`}>{item[0]}</h3><div><p className="max-w-xl text-sm font-light leading-7 text-neutral-600">{item[1]}</p><p className="mt-5 text-[9px] uppercase leading-5 tracking-[.18em] text-neutral-400">{item[2]}</p></div><span className="hidden text-neutral-400 md:block">↗</span></Link></Reveal>)}</div>
-  </section>;
+  const { locale } = useLocale();
+  const copy = content[locale];
+
+  return (
+    <section className="bg-[#f8f7f4] px-6 py-20 text-neutral-900 sm:px-8 md:px-10 md:py-28 lg:px-16">
+      <div className="grid gap-9 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr] lg:gap-12">
+        <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">{copy.label}</p>
+        <Reveal>
+          <h2 className="max-w-5xl text-[clamp(3rem,6.8vw,6.5rem)] font-light leading-[.94] tracking-[-.05em]">
+            {copy.title[0]}<br />{copy.title[1]}
+          </h2>
+        </Reveal>
+      </div>
+
+      <div className="mt-14 border-t border-neutral-300 md:mt-20">
+        {copy.items.map((item, index) => (
+          <Reveal key={item[0]}>
+            <Link
+              href={"/services#discipline-" + (index + 1)}
+              className="group grid items-start gap-3 border-b border-neutral-300 py-7 transition-colors hover:border-neutral-500 md:grid-cols-[52px_1fr_1fr_24px] md:gap-7 md:py-9"
+            >
+              <span className="pt-2 text-[10px] tracking-[.2em] text-[#4F6B7A]">
+                0{index + 1}
+              </span>
+              <h3 className={locale === "ar" ? "text-2xl font-light leading-tight md:text-4xl" : "text-2xl font-light leading-tight tracking-[-.04em] md:text-4xl"}>
+                {item[0]}
+              </h3>
+              <p className="max-w-md text-sm font-light leading-7 text-neutral-600">{item[1]}</p>
+              <span aria-hidden="true" className="hidden text-neutral-500 transition-transform group-hover:translate-x-1 md:block">↗</span>
+            </Link>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
 }

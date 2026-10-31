@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Reveal from "../animations/Reveal";
+import GoldenRatio from "./GoldenRatio";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 
 const content = {
@@ -30,6 +31,8 @@ export default function Manifesto() {
   const text = content[locale];
 
   return (
+    <>
+    <GoldenRatio />
     <section className="bg-[#f8f7f4] px-6 py-24 text-neutral-900 sm:px-8 md:px-10 md:py-32 lg:px-16">
       <div className="grid gap-9 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr] lg:gap-12">
         <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">
@@ -54,5 +57,6 @@ export default function Manifesto() {
         </div>
       </div>
     </section>
+    </>
   );
 }

@@ -30,9 +30,9 @@ export default function StudioPerspective() {
   const copy = content[locale];
 
   return (
-    <section className="bg-[#f8f7f4] px-6 pb-28 pt-10 text-neutral-900 sm:px-8 md:px-10 md:pb-36 md:pt-16 lg:px-16">
-      <div className="grid gap-10 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr] lg:gap-12">
-        <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">
+    <section className="bg-[#4F6B7A] px-6 pb-28 pt-24 text-white sm:px-8 md:px-10 md:pb-36 md:pt-32 lg:px-16">
+      <div className="grid gap-10 border-t border-white/35 pt-7 lg:grid-cols-[.35fr_1.65fr] lg:gap-12">
+        <p className="text-[9px] uppercase tracking-[.3em] text-white/80">
           {copy.label}
         </p>
         <div>
@@ -41,10 +41,10 @@ export default function StudioPerspective() {
               {copy.title}
             </h2>
           </Reveal>
-          <p className="mt-9 max-w-lg text-base font-light leading-8 text-neutral-600">
+          <p className="mt-9 max-w-lg text-base font-light leading-8 text-white/85">
             {copy.intro}
           </p>
-          <Link href="/contact" className="mt-9 inline-flex items-center gap-5 border-b border-neutral-400 pb-2 text-[10px] uppercase tracking-[.18em] transition-opacity hover:opacity-50">
+          <Link href="/contact" className="mt-9 inline-flex min-h-11 items-center gap-5 border-b border-white/70 pb-2 text-[10px] uppercase tracking-[.18em] text-white transition-opacity duration-300 hover:opacity-65 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
             {copy.action} <span aria-hidden="true">↗</span>
           </Link>
         </div>

@@ -72,7 +72,9 @@ export function mapWebsiteProject(row: Record<string, unknown>, relationSections
     : savedDescription;
   const savedLocation = String(row.location || "");
   const location = slug === "city-edge" && savedLocation === "Fayoum, Egypt" ? "Fayoum City, Egypt" : savedLocation;
-  return { id, slug, title: String(row.title || ""), location, year: String(row.year || ""), category: String(row.category || ""), description, image_url: publicImage(id, cover, updatedAt, "kind=cover"), gallery: strings(row.gallery).map((image, index) => publicImage(id, image, updatedAt, `kind=gallery&index=${index}`)), translations, content_sections: sections, published: Boolean(row.published) };
+  // City Edge public record uses its confirmed 2024 start date even if an older saved database row still says 2025.
+  const year = slug === "city-edge" && useCanonicalPublicCopy ? "2024 — Ongoing" : String(row.year || "");
+  return { id, slug, title: String(row.title || ""), location, year, category: String(row.category || ""), description, image_url: publicImage(id, cover, updatedAt, "kind=cover"), gallery: strings(row.gallery).map((image, index) => publicImage(id, image, updatedAt, `kind=gallery&index=${index}`)), translations, content_sections: sections, published: Boolean(row.published) };
 }
 
 async function sectionRows(projectIds: string[]) {

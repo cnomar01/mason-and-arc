@@ -13,7 +13,7 @@ const content = {
     storyTitle: "An Italian origin. A new chapter.",
     story: "Our roots in Italy inform the care we bring to proportion, material, craft and detail. The current Mason & Arc chapter began in 2024, bringing these values into a connected design practice based in Egypt.",
     timeline: [
-      ["2001", "Origins in Italy"],
+      ["2015", "Origins in Italy"],
       ["2024", "Mason & Arc, a new chapter"],
       ["2025", "Egypt"],
       ["2026", "Design + Execution"],
@@ -34,7 +34,7 @@ const content = {
     storyTitle: "جذور إيطالية. وفصل جديد.",
     story: "تعود جذورنا إلى إيطاليا، ومنها جاءت عنايتنا بالنسب والخامات والحرفة والتفاصيل. بدأ الفصل الحالي من Mason & Arc عام ٢٠٢٤، ليجمع هذه القيم في ممارسة تصميمية متكاملة مقرها مصر.",
     timeline: [
-      ["٢٠٠١", "الجذور في إيطاليا"],
+      ["٢٠١٥", "الجذور في إيطاليا"],
       ["٢٠٢٤", "Mason & Arc، فصل جديد"],
       ["٢٠٢٥", "مصر"],
       ["٢٠٢٦", "التصميم والتنفيذ"],
@@ -55,7 +55,7 @@ const content = {
     storyTitle: "Origini italiane. Un nuovo capitolo.",
     story: "Le nostre radici italiane guidano l’attenzione a proporzioni, materiali, artigianalità e dettagli. Il capitolo attuale di Mason & Arc è iniziato nel 2024 e unisce questi valori in una pratica di design con sede in Egitto.",
     timeline: [
-      ["2001", "Origini in Italia"],
+      ["2015", "Origini in Italia"],
       ["2024", "Mason & Arc, un nuovo capitolo"],
       ["2025", "Egitto"],
       ["2026", "Progettazione + Realizzazione"],

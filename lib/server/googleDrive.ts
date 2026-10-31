@@ -538,3 +538,42 @@ export async function deleteDriveFile(
 
   return { ok: true, alreadyMissing: false };
 }
+
+
+/**
+ * Read the bytes of a project-owned Drive upload without sharing the studio's
+ * OAuth token or exposing a public Google Drive link.
+ * The caller must enforce application-level access to the DB file record.
+ */
+export async function fetchAuthorizedProjectDriveFile(
+  fileId: string,
+  expectedProjectId: string
+): Promise<Response> {
+  if (!/^[A-Za-z0-9_-]{5,200}$/.test(fileId))
+    throw new Error("Invalid Drive file ID.");
+
+  const accessToken = await getDriveAccessToken();
+  const headers = { Authorization: "Bearer " + accessToken };
+  const endpoint = GOOGLE_DRIVE_API + "/files/" + encodeURIComponent(fileId);
+
+  const metadataResponse = await fetch(
+    endpoint + "?fields=id,mimeType,trashed,appProperties",
+    { headers, cache: "no-store", signal: AbortSignal.timeout(15000) }
+  );
+  if (!metadataResponse.ok) throw new Error("The Drive file is unavailable.");
+  const metadata = (await metadataResponse.json()) as {
+    mimeType?: string;
+    trashed?: boolean;
+    appProperties?: Record<string, string>;
+  };
+  if (metadata.trashed || metadata.appProperties?.masonArcProjectId !== expectedProjectId)
+    throw new Error("FORBIDDEN");
+  if (metadata.mimeType?.startsWith("application/vnd.google-apps."))
+    throw new Error("This Google Workspace document must be exported by the studio.");
+
+  const download = await fetch(endpoint + "?alt=media", {
+    headers, cache: "no-store", signal: AbortSignal.timeout(30000),
+  });
+  if (!download.ok || !download.body) throw new Error("The file could not be downloaded.");
+  return download;
+}

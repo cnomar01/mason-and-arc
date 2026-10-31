@@ -145,6 +145,16 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
+            <div className="mt-8 w-full max-w-[240px] border-t border-white/25 pt-5 md:mt-10">
+              <Link
+                href="/app/login"
+                onClick={() => setOpen(false)}
+                className={`inline-flex min-h-11 items-center gap-3 text-[11px] font-medium text-white/75 transition-colors duration-300 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${locale === "ar" ? "font-[var(--font-arabic)] tracking-normal" : "uppercase tracking-[.16em]"}`}
+              >
+                <span>{copy.workspace}</span>
+                <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
           </nav>
           <div className="mt-8 flex flex-col gap-5 border-t border-white/20 pt-5 sm:flex-row sm:items-end sm:justify-between">
             <div>

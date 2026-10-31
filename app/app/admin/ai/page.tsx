@@ -34,7 +34,7 @@ export default function AIStudioPage() {
           <div className="flex flex-wrap items-start justify-between gap-5">
             <div>
               <div className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/40">
-                <Sparkles size={13} /> Mason & Arc Intelligence
+                <Sparkles size={13} /> Workspace / Intelligence
               </div>
               <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">AI Studio OS</h1>
               <p className="mt-4 max-w-2xl text-sm leading-6 text-white/50">

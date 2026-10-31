@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Reveal from "@/components/animations/Reveal";
+import LetsCreateCTA from "@/components/shared/LetsCreateCTA";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { serviceSlugs, servicesContent, type ServiceSlug } from "@/components/services/ServicesHero";
 
@@ -55,11 +56,7 @@ export default function ServiceDetail({ slug }: { slug: ServiceSlug }) {
         </div>
       </section>
 
-      <section className="px-6 py-20 sm:px-8 md:px-10 md:py-28 lg:px-16">
-        <div className="mx-auto flex max-w-[1600px] justify-end">
-          <Link href={`/contact?service=discipline-${index + 1}`} className="inline-flex rounded-full border border-neutral-400 px-7 py-4 text-[9px] uppercase tracking-[.25em] transition hover:bg-neutral-900 hover:text-white">{copy.cta} ↗</Link>
-        </div>
-      </section>
+      <LetsCreateCTA href={`/contact?service=discipline-${index + 1}`} />
     </main>
   );
 }

@@ -3,425 +3,138 @@
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 
-const aboutCopy = {
+const content = {
   en: {
-    eyebrow: "About",
-    hero: ["One vision.", "Many", "disciplines."],
-    practiceLabel: "Professional practice in Italy",
-    historyLead: "Mason & Arc is informed by professional experience developed in Italy since 2015, including contributions to and supervision of major projects across different scales and contexts.",
-    historyBody: "This experience shaped a rigorous understanding of architecture, detailed coordination, material quality, and the relationship between design intent and the completed space.",
-    country: "Italy",
-    since: "From 2015",
-    experience: "Years of professional practice in Italy, including the supervision of major projects, inform the precision and attention to detail behind the studio today.",
-    chapterLabel: "A new chapter",
-    chapterTitle: ["A new", "chapter"],
-    chapterLead: "A new, independent multidisciplinary design studio based in Egypt.",
-    chapterBody: "This experience now informs a new and independent chapter based in Egypt. Mason & Arc works across four connected practices: Architecture & Interiors, Branding & Creative Direction, Visualization & Communication, and Digital Experiences, for projects in Egypt and internationally.",
-    approachLabel: "Our Approach",
-    approachLead: "Our approach begins by defining the central idea that connects space, identity, image, and experience.",
-    approachBody: "Every project is considered as one connected expression. From the earliest concept to the final physical or digital touchpoint, decisions are made with clarity, consistency, and purpose so that every part belongs to the same story.",
-    closingTitle: ["Work with", "character.", "Purpose.", "Lasting value."],
-    closingBody: "Our ambition is to shape spaces, identities, images, and digital experiences with character, purpose, and lasting value — where every touchpoint feels connected and intentional.",
-    ctaLabel: "Start a project",
-    ctaTitle: ["Let's", "design."],
+    eyebrow: "About the studio",
+    hero1: "One vision.",
+    hero2: "Many disciplines.",
+    intro: "Mason & Arc is an independent, multidisciplinary design studio working across architecture, interiors, identity, visualization and digital experiences.",
+    storyLabel: "Our story",
+    storyTitle: "An Italian origin. A new chapter.",
+    story: "Our roots in Italy inform the care we bring to proportion, material, craft and detail. The current Mason & Arc chapter began in 2024, bringing these values into a connected design practice based in Egypt.",
+    timeline: [
+      ["2001", "Origins in Italy"],
+      ["2024", "Mason & Arc, a new chapter"],
+      ["2025", "Egypt"],
+      ["2026", "Design + Execution"],
+    ],
+    approachLabel: "Our point of view",
+    approachTitle: "One idea, carried through.",
+    approach: "We connect the space, the identity and the way a project is communicated, so every decision belongs to the same vision. We believe the strongest work feels considered, coherent and built with intent.",
+    ctaLabel: "Start a conversation",
+    ctaTitle: "Let's create.",
     ctaLink: "Get in touch",
   },
   ar: {
     eyebrow: "عن الاستوديو",
-    hero: ["رؤية واحدة.", "وتخصصات", "متعددة."],
-    practiceLabel: "خبرة مهنية في إيطاليا",
-    historyLead: "تستند Mason & Arc إلى خبرة مهنية تطورت في إيطاليا منذ عام 2015، وشملت المشاركة في مشروعات كبيرة والإشراف على تنفيذها عبر مقاييس وسياقات مختلفة.",
-    historyBody: "شكّلت هذه الخبرة فهمًا دقيقًا للعمارة والتنسيق التفصيلي وجودة الخامات والعلاقة بين الفكرة التصميمية والفراغ بعد اكتماله.",
-    country: "إيطاليا",
-    since: "منذ 2015",
-    experience: "سنوات من الممارسة المهنية في إيطاليا، بما في ذلك الإشراف على مشروعات كبيرة، تقف خلف الدقة والاهتمام بالتفاصيل اللذين يميزان الاستوديو اليوم.",
-    chapterLabel: "فصل جديد",
-    chapterTitle: ["فصل", "جديد"],
-    chapterLead: "استوديو تصميم متعدد التخصصات، جديد ومستقل، مقره مصر.",
-    chapterBody: "تشكل هذه الخبرة اليوم أساس فصل جديد ومستقل مقره مصر. تعمل Mason & Arc عبر أربع ممارسات مترابطة: العمارة والتصميم الداخلي، الهوية والتوجيه الإبداعي، التصور والتواصل، والتجارب الرقمية، لمشروعات في مصر ودوليًا.",
-    approachLabel: "منهجنا",
-    approachLead: "يبدأ منهجنا بتحديد الفكرة المركزية التي تربط المساحة والهوية والصورة والتجربة.",
-    approachBody: "نتعامل مع كل مشروع كتعبير واحد مترابط. من الفكرة الأولى إلى آخر نقطة تواصل مادية أو رقمية، تُتخذ القرارات بوضوح واتساق وهدف، ليبقى كل جزء ضمن الحكاية نفسها.",
-    closingTitle: ["عمل ذو", "شخصية.", "وهدف.", "وقيمة تدوم."],
-    closingBody: "طموحنا هو صياغة مساحات وهويات وصور وتجارب رقمية ذات شخصية وهدف وقيمة تدوم، حيث تبدو كل نقطة تواصل مترابطة ومقصودة.",
-    ctaLabel: "ابدأ مشروعًا",
-    ctaTitle: ["لنصمّم", "معًا."],
+    hero1: "رؤية واحدة.",
+    hero2: "وتخصصات متعددة.",
+    intro: "Mason & Arc استوديو تصميم مستقل ومتعدد التخصصات، نعمل في العمارة والتصميم الداخلي والهوية والتصور المعماري والتجارب الرقمية.",
+    storyLabel: "قصتنا",
+    storyTitle: "جذور إيطالية. وفصل جديد.",
+    story: "تعود جذورنا إلى إيطاليا، ومنها جاءت عنايتنا بالنسب والخامات والحرفة والتفاصيل. بدأ الفصل الحالي من Mason & Arc عام ٢٠٢٤، ليجمع هذه القيم في ممارسة تصميمية متكاملة مقرها مصر.",
+    timeline: [
+      ["٢٠٠١", "الجذور في إيطاليا"],
+      ["٢٠٢٤", "Mason & Arc، فصل جديد"],
+      ["٢٠٢٥", "مصر"],
+      ["٢٠٢٦", "التصميم والتنفيذ"],
+    ],
+    approachLabel: "وجهة نظرنا",
+    approachTitle: "فكرة واحدة، تمتد إلى كل تفصيلة.",
+    approach: "نربط المكان بالهوية وطريقة تقديم المشروع، ليكون كل قرار جزءًا من رؤية واحدة. نؤمن أن أفضل الأعمال هي التي تتميز بالوضوح والاتساق والعناية بالتنفيذ.",
+    ctaLabel: "لنبدأ الحوار",
+    ctaTitle: "لنصنع شيئًا معًا.",
     ctaLink: "تواصل معنا",
   },
   it: {
-    eyebrow: "Studio",
-    hero: ["Una visione.", "Molte", "discipline."],
-    practiceLabel: "Esperienza professionale in Italia",
-    historyLead: "Mason & Arc si fonda su un’esperienza professionale maturata in Italia dal 2015, che comprende il contributo e la supervisione alla realizzazione di importanti progetti di scale e contesti diversi.",
-    historyBody: "Questa esperienza ha costruito una conoscenza rigorosa dell’architettura, del coordinamento di dettaglio, della qualità dei materiali e del rapporto tra intento progettuale e spazio realizzato.",
-    country: "Italia",
-    since: "Dal 2015",
-    experience: "Gli anni di pratica professionale in Italia, compresa la supervisione di importanti progetti, guidano oggi la precisione e l’attenzione al dettaglio dello studio.",
-    chapterLabel: "Un nuovo capitolo",
-    chapterTitle: ["Un nuovo", "capitolo"],
-    chapterLead: "Un nuovo studio di design multidisciplinare e indipendente con sede in Egitto.",
-    chapterBody: "Questa esperienza informa oggi un nuovo capitolo indipendente con sede in Egitto. Mason & Arc lavora attraverso quattro pratiche connesse: Architettura & Interni, Branding & Direzione Creativa, Visualizzazione & Comunicazione ed Esperienze Digitali, in Egitto e a livello internazionale.",
-    approachLabel: "Il nostro approccio",
-    approachLead: "Il nostro approccio parte dall’idea centrale che connette spazio, identità, immagine ed esperienza.",
-    approachBody: "Ogni progetto viene considerato come un’unica espressione connessa. Dal primo concept all’ultimo punto di contatto fisico o digitale, le decisioni sono guidate da chiarezza, coerenza e intenzione, perché ogni parte appartenga alla stessa storia.",
-    closingTitle: ["Un lavoro con", "carattere.", "Scopo.", "Valore duraturo."],
-    closingBody: "La nostra ambizione è dare forma a spazi, identità, immagini ed esperienze digitali con carattere, scopo e valore duraturo, dove ogni punto di contatto è connesso e intenzionale.",
-    ctaLabel: "Inizia un progetto",
-    ctaTitle: ["Progettiamo", "insieme."],
+    eyebrow: "Lo studio",
+    hero1: "Una visione.",
+    hero2: "Molte discipline.",
+    intro: "Mason & Arc è uno studio di design multidisciplinare indipendente, attivo in architettura, interni, identità, visualizzazione ed esperienze digitali.",
+    storyLabel: "La nostra storia",
+    storyTitle: "Origini italiane. Un nuovo capitolo.",
+    story: "Le nostre radici italiane guidano l’attenzione a proporzioni, materiali, artigianalità e dettagli. Il capitolo attuale di Mason & Arc è iniziato nel 2024 e unisce questi valori in una pratica di design con sede in Egitto.",
+    timeline: [
+      ["2001", "Origini in Italia"],
+      ["2024", "Mason & Arc, un nuovo capitolo"],
+      ["2025", "Egitto"],
+      ["2026", "Progettazione + Realizzazione"],
+    ],
+    approachLabel: "Il nostro punto di vista",
+    approachTitle: "Un’idea, portata fino in fondo.",
+    approach: "Connettiamo spazio, identità e comunicazione affinché ogni decisione appartenga alla stessa visione. Crediamo in un lavoro curato, coerente e realizzato con intenzione.",
+    ctaLabel: "Iniziamo a parlare",
+    ctaTitle: "Creiamo insieme.",
     ctaLink: "Contattaci",
   },
 } as const;
 
 export default function AboutPage() {
   const { locale } = useLocale();
-  const copy = aboutCopy[locale];
+  const copy = content[locale];
 
   return (
-    <main className="bg-white text-black">
-
-      {/* =====================================================
-          INTRO
-      ===================================================== */}
-
-      <section className="min-h-screen px-6 pb-24 pt-36 md:px-10 md:pt-44">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
-
-          <div className="lg:col-span-3">
-            <p className="text-[9px] uppercase tracking-[0.25em] text-black/50">
-              {copy.eyebrow}
-            </p>
-          </div>
-
-          <div className="lg:col-span-9">
-            <h1
-              className="
-                max-w-[1200px]
-                font-extralight
-                text-[48px]
-                leading-[0.86]
-                tracking-[-0.055em]
-
-                sm:text-[64px]
-                md:text-[120px]
-                lg:text-[145px]
-                xl:text-[160px]
-              "
-            >
-              {copy.hero[0]}
-              <br />
-              {copy.hero[1]}
-              <br />
-              {copy.hero[2]}
-            </h1>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          HISTORY
-      ===================================================== */}
-
-      <section className="border-t border-black/15 px-6 py-24 md:px-10 md:py-32">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
-
-          <div className="lg:col-span-3">
-            <div
-              className="
-                font-extralight
-                text-[60px]
-                leading-none
-                tracking-[-0.03em]
-                md:text-[100px]
-              "
-            >
-              2015
-            </div>
-
-            <p className="mt-4 text-[9px] uppercase tracking-[0.2em] text-black/50">
-              {copy.practiceLabel}
-            </p>
-          </div>
-
-          <div className="lg:col-span-7 lg:col-start-5">
-
-            <p
-              className="
-                text-[20px]
-                leading-[1.2]
-                tracking-[-0.02em]
-                sm:text-[24px]
-                md:text-[34px]
-                lg:text-[42px]
-              "
-            >
-              {copy.historyLead}
-            </p>
-
-            <p
-              className="
-                mt-10
-                max-w-[720px]
-                text-[14px]
-                leading-[1.6]
-                text-black/65
-                md:text-[16px]
-              "
-            >
-              {copy.historyBody}
-            </p>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          PROFESSIONAL EXPERIENCE
-      ===================================================== */}
-
-      <section className="bg-black px-6 py-28 text-white md:px-10 md:py-40">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:items-end">
-
-          <div className="lg:col-span-8">
-            <div
-              className="
-                font-extralight
-                text-[120px]
-                leading-[0.7]
-                tracking-[-0.04em]
-
-                sm:text-[180px]
-                md:text-[300px]
-                lg:text-[360px]
-              "
-            >
-              {copy.country}
-            </div>
-          </div>
-
-          <div className="lg:col-span-3 lg:col-start-10">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">
-              {copy.since}
-            </p>
-
-            <p className="mt-5 text-[14px] leading-[1.55] text-white/75 md:text-[16px]">
-              {copy.experience}
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          A NEW CHAPTER IN EGYPT
-      ===================================================== */}
-
-      <section className="px-6 py-28 md:px-10 md:py-40">
-        <div className="grid grid-cols-1 gap-20 lg:grid-cols-12">
-
-          <div className="lg:col-span-8">
-
-            <p className="mb-8 text-[9px] uppercase tracking-[0.25em] text-black/45">
-              {copy.chapterLabel}
-            </p>
-
-            <h2
-              className="
-                font-extralight
-                text-[58px]
-                leading-[0.86]
-                tracking-[-0.055em]
-
-                sm:text-[76px]
-                md:text-[130px]
-                lg:text-[170px]
-              "
-            >
-              {copy.chapterTitle[0]}
-              <br />
-              {copy.chapterTitle[1]}
-            </h2>
-
-          </div>
-
-          <div className="flex items-end lg:col-span-4">
-            <div>
-
-              <p
-                className="
-                  text-[20px]
-                  leading-[1.15]
-                  tracking-[-0.02em]
-                  sm:text-[24px]
-                  md:text-[32px]
-                "
-              >
-                {copy.chapterLead}
-              </p>
-
-              <p className="mt-8 text-[14px] leading-[1.6] text-black/65 md:text-[16px]">
-                {copy.chapterBody}
-              </p>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          APPROACH
-      ===================================================== */}
-
-      <section className="border-t border-black/15 px-6 py-24 md:px-10 md:py-32">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
-
-          <div className="lg:col-span-3">
-            <p className="text-[9px] uppercase tracking-[0.25em] text-black/50">
-              {copy.approachLabel}
-            </p>
-          </div>
-
-          <div className="lg:col-span-8 lg:col-start-5">
-
-            <p
-              className="
-                text-[26px]
-                leading-[1.08]
-                tracking-[-0.025em]
-                sm:text-[30px]
-                md:text-[46px]
-                lg:text-[56px]
-              "
-            >
-              {copy.approachLead}
-            </p>
-
-            <p
-              className="
-                mt-12
-                max-w-[760px]
-                text-[15px]
-                leading-[1.7]
-                text-black/65
-                md:text-[17px]
-              "
-            >
-              {copy.approachBody}
-            </p>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          CLOSING
-      ===================================================== */}
-
-      <section className="bg-black px-6 py-28 text-white md:px-10 md:py-40">
-
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
-
-          <div className="lg:col-span-9">
-
-            <h2
-              className="
-                font-extralight
-                text-[48px]
-                leading-[0.86]
-                tracking-[-0.055em]
-
-                sm:text-[64px]
-                md:text-[120px]
-                lg:text-[155px]
-              "
-            >
-              {copy.closingTitle[0]}
-              <br />
-              {copy.closingTitle[1]}
-              <br />
-              {copy.closingTitle[2]}
-              <br />
-              {copy.closingTitle[3]}
-            </h2>
-
-          </div>
-
-          <div className="lg:col-span-3 lg:col-start-10 lg:flex lg:items-end">
-
-            <p className="text-[14px] leading-[1.65] text-white/60 md:text-[16px]">
-              {copy.closingBody}
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          CONTACT CTA
-      ===================================================== */}
-
-      <section className="px-6 py-24 md:px-10 md:py-32">
-
-        <div className="flex flex-col gap-10 border-t border-black/20 pt-8 md:flex-row md:items-end md:justify-between">
-
+    <main className="bg-[#f8f7f4] text-neutral-900">
+      <section className="px-6 pb-24 pt-36 sm:px-8 md:px-10 md:pb-36 md:pt-44 lg:px-16">
+        <div className="grid gap-10 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr]">
+          <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">{copy.eyebrow}</p>
           <div>
-
-            <p className="text-[9px] uppercase tracking-[0.25em] text-black/45">
-              {copy.ctaLabel}
+            <h1 className="max-w-6xl text-[clamp(3.8rem,9vw,9rem)] font-light leading-[.91] tracking-[-.055em]">
+              <span className="block">{copy.hero1}</span>
+              <span className="block">{copy.hero2}</span>
+            </h1>
+            <p className="mt-12 max-w-2xl text-base font-light leading-8 text-neutral-600 md:mt-16 md:text-lg">
+              {copy.intro}
             </p>
-
-            <h2
-              className="
-                mt-5
-                font-extralight
-                text-[56px]
-                leading-[0.86]
-                tracking-[-0.055em]
-
-                sm:text-[72px]
-                md:text-[110px]
-                lg:text-[140px]
-              "
-            >
-              {copy.ctaTitle[0]}
-              <br />
-              {copy.ctaTitle[1]}
-            </h2>
-
           </div>
-
-          <Link
-            href="/contact"
-            className="
-              inline-flex
-              items-center
-              gap-4
-              border-b
-              border-black
-              pb-2
-              text-[10px]
-              uppercase
-              tracking-[0.2em]
-              transition-opacity
-              duration-300
-              hover:opacity-50
-            "
-          >
-            {copy.ctaLink}
-            <span className="text-base">↗</span>
-          </Link>
-
         </div>
       </section>
 
+      <section className="px-6 py-20 sm:px-8 md:px-10 md:py-28 lg:px-16">
+        <div className="grid gap-10 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr]">
+          <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">{copy.storyLabel}</p>
+          <div>
+            <h2 className="max-w-5xl text-[clamp(2.8rem,6vw,6rem)] font-light leading-[.96] tracking-[-.05em]">
+              {copy.storyTitle}
+            </h2>
+            <p className="mt-9 max-w-2xl text-base font-light leading-8 text-neutral-600">{copy.story}</p>
+            <div className="mt-14 grid gap-0 border-t border-neutral-300 md:mt-20">
+              {copy.timeline.map(([year, label]) => (
+                <div key={year} className="grid grid-cols-[100px_1fr] gap-6 border-b border-neutral-300 py-6 md:grid-cols-[150px_1fr] md:py-8">
+                  <span className="text-xl font-light tracking-[-.03em] text-[#4F6B7A] md:text-2xl">{year}</span>
+                  <span className="self-center text-lg font-light text-neutral-800 md:text-2xl">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20 sm:px-8 md:px-10 md:py-28 lg:px-16">
+        <div className="grid gap-10 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr]">
+          <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">{copy.approachLabel}</p>
+          <div>
+            <h2 className="max-w-5xl text-[clamp(2.8rem,6vw,6rem)] font-light leading-[.96] tracking-[-.05em]">
+              {copy.approachTitle}
+            </h2>
+            <p className="mt-9 max-w-2xl text-base font-light leading-8 text-neutral-600">{copy.approach}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-28 pt-16 sm:px-8 md:px-10 md:pb-36 lg:px-16">
+        <div className="grid gap-10 border-t border-neutral-300 pt-7 lg:grid-cols-[.35fr_1.65fr]">
+          <p className="text-[9px] uppercase tracking-[.3em] text-neutral-500">{copy.ctaLabel}</p>
+          <div>
+            <h2 className="text-[clamp(3.75rem,9vw,9rem)] font-light leading-[.93] tracking-[-.055em]">
+              {copy.ctaTitle}
+            </h2>
+            <Link href="/contact" className="mt-10 inline-flex items-center gap-5 border-b border-neutral-500 pb-2 text-[10px] uppercase tracking-[.18em] transition-opacity hover:opacity-50">
+              {copy.ctaLink} <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLocale } from "@/components/i18n/LocaleProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,27 +27,7 @@ const RATIO_TILES = [
   { x: 788, y: 452, width: 56, height: 56, opacity: 0.032 },
 ];
 
-const RATIO_MESSAGE = {
-  en: {
-    label: "Proportion is a principle, not a formula.",
-    first: "Proportion is a principle,",
-    second: "not a formula.",
-  },
-  ar: {
-    label: "التناسب مبدأ، وليس معادلة.",
-    first: "التناسب مبدأ،",
-    second: "وليس معادلة.",
-  },
-  it: {
-    label: "La proporzione è un principio, non una formula.",
-    first: "La proporzione è un principio,",
-    second: "non una formula.",
-  },
-} as const;
-
 export default function GoldenRatio() {
-  const { locale } = useLocale();
-  const message = RATIO_MESSAGE[locale];
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -285,7 +264,7 @@ export default function GoldenRatio() {
 
         <div className="absolute inset-x-0 bottom-10 z-10 mx-auto max-w-7xl px-6 sm:bottom-14 sm:px-8 md:bottom-[7svh] md:px-12">
           <p
-            aria-label={message.label}
+            aria-label="Proportion is a principle, not a formula."
             className="max-w-[1000px] text-[34px] font-light leading-[0.95] tracking-[-0.045em] sm:text-[48px] md:text-[68px] md:leading-[0.94] lg:text-[80px] xl:text-[84px]"
           >
             <span aria-hidden="true" className="block overflow-hidden">
@@ -293,7 +272,7 @@ export default function GoldenRatio() {
                 className="home-ratio-line block"
                 style={{ transform: "translateY(110%)" }}
               >
-                {message.first}
+                Proportion is a principle,
               </span>
             </span>
             <span aria-hidden="true" className="block overflow-hidden">
@@ -301,7 +280,7 @@ export default function GoldenRatio() {
                 className="home-ratio-line block"
                 style={{ transform: "translateY(110%)" }}
               >
-                {message.second}
+                not a formula.
               </span>
             </span>
           </p>

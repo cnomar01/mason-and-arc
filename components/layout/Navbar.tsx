@@ -145,14 +145,14 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
-            <div className="mt-8 w-full max-w-[240px] border-t border-white/25 pt-5 md:mt-10">
+            <div className="mt-8 w-full max-w-[260px] border-t border-white/25 pt-5 md:mt-10 md:pt-6">
               <Link
                 href="/app/login"
                 onClick={() => setOpen(false)}
-                className={`inline-flex min-h-11 items-center gap-3 text-[11px] font-medium text-white/75 transition-colors duration-300 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${locale === "ar" ? "font-[var(--font-arabic)] tracking-normal" : "uppercase tracking-[.16em]"}`}
+                className={`group flex min-h-14 w-full items-center justify-between gap-5 border border-white/60 px-5 py-3.5 text-[11px] font-medium text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${locale === "ar" ? "font-[var(--font-arabic)] tracking-normal" : "uppercase tracking-[.16em]"}`}
               >
                 <span>{copy.workspace}</span>
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true" className="text-base leading-none transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
               </Link>
             </div>
           </nav>

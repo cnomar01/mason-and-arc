@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowLeft, FileText, Upload } from "lucide-react";
 import { createResource, listResource } from "@/lib/client/dataApi";
+import { DELIVERABLE_CATEGORIES } from "@/lib/workspace/studioDelivery";
 import {
   deleteProjectDriveFile,
   uploadProjectFileToDrive,
@@ -20,18 +21,7 @@ type CurrentUser = {
   name: string;
 };
 
-const categories = [
-  "Architectural Drawing",
-  "Civil Drawing",
-  "Model",
-  "Render",
-  "Report",
-  "Contract",
-  "Deliverable",
-  "Site Photo",
-  "Document",
-  "Other",
-] as const;
+const categories = DELIVERABLE_CATEGORIES;
 
 const statuses = [
   "Draft",

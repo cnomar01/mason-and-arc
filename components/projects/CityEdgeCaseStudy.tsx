@@ -189,25 +189,25 @@ export default function CityEdgeCaseStudy({ project }: { project: WebsiteProject
         )}
       </section>
 
-      <section className="px-6 pb-24 pt-20 sm:px-8 md:px-10 md:pb-32 md:pt-28 lg:px-16">
-        <div className="grid gap-9 border-t border-neutral-300 pt-7 lg:grid-cols-[.34fr_1.66fr] lg:gap-12">
-          <p className="text-[10px] tracking-[.16em] text-neutral-500">{copy.scopeLabel}</p>
+      <section className="bg-[#4F6B7A] px-6 pb-24 pt-20 text-white sm:px-8 md:px-10 md:pb-32 md:pt-28 lg:px-16">
+        <div className="grid gap-9 border-t border-white/30 pt-7 lg:grid-cols-[.34fr_1.66fr] lg:gap-12">
+          <p className="text-[10px] tracking-[.16em] text-white/75">{copy.scopeLabel}</p>
           <div>
             <h2 className={titleClass + " max-w-5xl text-[clamp(2.9rem,6vw,6rem)]"}>{copy.scopeTitle}</h2>
             {designScope.length > 0 && (
-              <ol className="mt-14 border-t border-neutral-300 md:mt-20">
+              <ol className="mt-14 border-t border-white/30 md:mt-20">
                 {designScope.map((item, index) => (
-                  <li key={item} className="grid grid-cols-[45px_1fr] items-baseline gap-4 border-b border-neutral-300 py-6 md:grid-cols-[75px_1fr] md:py-8">
-                    <span className="text-[10px] tabular-nums tracking-[.16em] text-[#4F6B7A]">{String(index + 1).padStart(2, "0")}</span>
+                  <li key={item} className="grid grid-cols-[45px_1fr] items-baseline gap-4 border-b border-white/30 py-6 md:grid-cols-[75px_1fr] md:py-8">
+                    <span className="text-[10px] tabular-nums tracking-[.16em] text-white/65">{String(index + 1).padStart(2, "0")}</span>
                     <span className="text-xl font-light leading-8 md:text-[clamp(1.6rem,3vw,2.8rem)] md:leading-[1.3]">{item}</span>
                   </li>
                 ))}
               </ol>
             )}
             {supervisionBody && (
-              <div className="mt-14 grid gap-6 border-t border-neutral-300 pt-7 sm:grid-cols-[.5fr_1.5fr] md:mt-20">
-                <p className="text-[10px] tracking-[.12em] text-[#4F6B7A]">{copy.supervisionLabel}</p>
-                <p className="max-w-2xl text-base font-light leading-8 text-neutral-600">{supervisionBody}</p>
+              <div className="mt-14 grid gap-6 border-t border-white/30 pt-7 sm:grid-cols-[.5fr_1.5fr] md:mt-20">
+                <p className="text-[10px] tracking-[.12em] text-white/85">{copy.supervisionLabel}</p>
+                <p className="max-w-2xl text-base font-light leading-8 text-white/85">{supervisionBody}</p>
               </div>
             )}
           </div>

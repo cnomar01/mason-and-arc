@@ -23,7 +23,9 @@ import {
 import { useEffect, useState } from "react";
 import LegacyStorageMigration from "@/components/core/LegacyStorageMigration";
 
-const navigationGroups = [
+type WorkspaceNavItem = { label: string; href: string };
+
+const navigationGroups: { label: string; items: WorkspaceNavItem[] }[] = [
   {
     label: "Studio",
     items: [
@@ -77,7 +79,7 @@ const navigationGroups = [
       { label: "Settings", href: "/app/admin/settings" },
     ],
   },
-] as const;
+];
 
 const navigation = navigationGroups.flatMap((group) => group.items);
 
@@ -340,16 +342,26 @@ function AdminShell({
                 Client portal ↗
               </Link>
             </div>
-            <nav className="grid grid-cols-2 gap-2 sm:grid-cols-3" aria-label="Workspace navigation">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex min-h-12 items-center rounded-xl border border-white/10 px-3 py-2 text-xs leading-4 text-white/70 transition hover:bg-white/[0.06] hover:text-white"
-                >
-                  {item.label}
-                </Link>
+            <nav className="space-y-6" aria-label="Workspace navigation">
+              {navigationGroups.map((group) => (
+                <div key={group.label}>
+                  <p className="px-1 text-[9px] uppercase tracking-[0.2em] text-white/40">
+                    {group.label}
+                  </p>
+                  <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                    {group.items.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        aria-current={activeNav === item.href ? "page" : undefined}
+                        className={`flex min-h-12 items-center rounded-lg border px-3 py-2 text-xs leading-4 transition-colors ${activeNav === item.href ? "border-[#4F6B7A] bg-white/10 text-white" : "border-white/10 text-white/70 hover:bg-white/[0.06] hover:text-white"}`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ))}
             </nav>
           </div>

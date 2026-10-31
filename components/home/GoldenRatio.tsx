@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +28,24 @@ const RATIO_TILES = [
   { x: 788, y: 452, width: 56, height: 56, opacity: 0.032 },
 ];
 
+const ratioCopy = {
+  en: {
+    line1: "Proportion is a principle,",
+    line2: "not a formula.",
+  },
+  ar: {
+    line1: "التناسب مبدأ،",
+    line2: "وليس معادلة.",
+  },
+  it: {
+    line1: "La proporzione è un principio,",
+    line2: "non una formula.",
+  },
+} as const;
+
 export default function GoldenRatio() {
+  const { locale } = useLocale();
+  const text = ratioCopy[locale];
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -264,15 +282,19 @@ export default function GoldenRatio() {
 
         <div className="absolute inset-x-0 bottom-10 z-10 mx-auto max-w-7xl px-6 sm:bottom-14 sm:px-8 md:bottom-[7svh] md:px-12">
           <p
-            aria-label="Proportion is a principle, not a formula."
-            className="max-w-[1000px] text-[34px] font-light leading-[0.95] tracking-[-0.045em] sm:text-[48px] md:text-[68px] md:leading-[0.94] lg:text-[80px] xl:text-[84px]"
+            lang={locale}
+            dir={locale === "ar" ? "rtl" : "ltr"}
+            aria-label={`${text.line1} ${text.line2}`}
+            className={`max-w-[1000px] font-light ${locale === "ar"
+              ? "font-[var(--font-arabic)] text-[clamp(2.2rem,5.5vw,5.1rem)] leading-[1.28] tracking-normal"
+              : "text-[34px] leading-[0.95] tracking-[-0.045em] sm:text-[48px] md:text-[68px] md:leading-[0.94] lg:text-[80px] xl:text-[84px]"}`}
           >
             <span aria-hidden="true" className="block overflow-hidden">
               <span
                 className="home-ratio-line block"
                 style={{ transform: "translateY(110%)" }}
               >
-                Proportion is a principle,
+                {text.line1}
               </span>
             </span>
             <span aria-hidden="true" className="block overflow-hidden">
@@ -280,7 +302,7 @@ export default function GoldenRatio() {
                 className="home-ratio-line block"
                 style={{ transform: "translateY(110%)" }}
               >
-                not a formula.
+                {text.line2}
               </span>
             </span>
           </p>

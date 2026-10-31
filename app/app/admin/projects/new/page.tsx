@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
+import { PROJECT_PHASES } from "@/lib/workspace/studioDelivery";
 import {
   ArrowLeft,
   Building2,
@@ -9,18 +10,11 @@ import {
   UserRound,
 } from "lucide-react";
 
-type ProjectPhase = "Concept Design" | "Design Development" | "Technical Design" | "Tender" | "Construction" | "Handover";
+type ProjectPhase = (typeof PROJECT_PHASES)[number];
 type Client = { id: string; name: string; company?: string | null; active: boolean };
 type TeamMember = { id: string; name: string; role: string; active: boolean };
 
-const phases: ProjectPhase[] = [
-  "Concept Design",
-  "Design Development",
-  "Technical Design",
-  "Tender",
-  "Construction",
-  "Handover",
-];
+const phases: ProjectPhase[] = [...PROJECT_PHASES];
 
 export default function NewProjectPage() {
   const [name, setName] = useState("");
@@ -87,10 +81,6 @@ export default function NewProjectPage() {
       return;
     }
 
-    if (!location.trim()) {
-      setError("Project location is required.");
-      return;
-    }
 
     const selectedClient = clients.find(
       (client) => client.id === clientId
@@ -110,7 +100,7 @@ export default function NewProjectPage() {
         code: code.trim().toUpperCase(),
         name: name.trim(),
         type: type.trim(),
-        location: location.trim(),
+        location: location.trim() || "Remote / Not location-based",
         status: "Active",
         phase,
         description: description.trim(),
@@ -209,16 +199,15 @@ export default function NewProjectPage() {
                 label="Project Type"
                 value={type}
                 onChange={setType}
-                placeholder="e.g. Residential / Commercial"
+                placeholder="e.g. Residential Villa / Brand Identity / Website"
                 required
               />
 
               <Field
-                label="Location"
+                label="Location (if applicable)"
                 value={location}
                 onChange={setLocation}
-                placeholder="e.g. New Cairo"
-                required
+                placeholder="e.g. New Cairo or leave blank for remote work"
               />
 
             </div>

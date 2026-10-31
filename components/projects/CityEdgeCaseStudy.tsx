@@ -18,6 +18,8 @@ const editorialCopy = {
     conceptTitle: "One coherent architectural language.",
     conceptFallback: "From circulation and program to the expression of the façade.",
     board: "Concept development",
+    exteriorCaption: "City Edge — exterior study",
+    exteriorAlt: "City Edge exterior perspective",
     openImage: "Open full-size concept board",
     strategyLabel: "Spatial strategy",
     scopeLabel: "03 / The scope",
@@ -41,6 +43,8 @@ const editorialCopy = {
     conceptTitle: "لغة معمارية واحدة.",
     conceptFallback: "من تنظيم الحركة والبرنامج إلى التعبير المعماري للواجهة.",
     board: "تطوير الفكرة التصميمية",
+    exteriorCaption: "سيتي إيدج — دراسة الواجهة",
+    exteriorAlt: "منظور خارجي لمشروع سيتي إيدج",
     openImage: "افتح لوحة الفكرة بالحجم الكامل",
     strategyLabel: "التنظيم المكاني",
     scopeLabel: "٠٣ / نطاق العمل",
@@ -64,6 +68,8 @@ const editorialCopy = {
     conceptTitle: "Un linguaggio architettonico coerente.",
     conceptFallback: "Dalla circolazione e dal programma all'espressione della facciata.",
     board: "Sviluppo del concept",
+    exteriorCaption: "City Edge — studio dell’esterno",
+    exteriorAlt: "Prospettiva esterna di City Edge",
     openImage: "Apri la tavola a grandezza naturale",
     strategyLabel: "Strategia spaziale",
     scopeLabel: "03 / Ambito",
@@ -99,23 +105,24 @@ export default function CityEdgeCaseStudy({ project }: { project: WebsiteProject
 
   return (
     <main className="min-w-0 overflow-x-clip bg-[#f8f7f4] text-neutral-900">
-      <section aria-label={translated.title} className="relative flex h-[100svh] min-h-[590px] flex-col justify-end overflow-hidden bg-neutral-900 text-white">
+      <section aria-label={translated.title} className="relative flex h-[100svh] min-h-[590px] flex-col justify-end overflow-hidden bg-[#e9e6e0] text-neutral-950">
         <Image
-          src={project.image_url}
-          alt={translated.title}
+          src={board?.image_url || project.image_url}
+          alt={board ? localizedText(board.alt_text, locale) || copy.board : translated.title}
           fill
           priority
           unoptimized
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/25" />
+        {/* A soft paper-coloured scrim keeps the navigation and title legible over the drawings. */}
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-[#f8f7f4]/95 via-[#f8f7f4]/5 to-[#f8f7f4]/95" />
         <div className="relative z-10 flex h-full flex-col justify-between px-6 pb-12 pt-32 sm:px-8 md:px-10 md:pb-16 lg:px-16">
-          <div className="flex flex-wrap items-start justify-between gap-4 text-[10px] font-normal tracking-[.14em] text-white/80">
-            <Link href="/projects" className="inline-flex items-center gap-3 transition-opacity hover:opacity-55">
+          <div className="flex flex-wrap items-start justify-between gap-4 text-[11px] font-medium tracking-[.1em] text-neutral-900">
+            <Link href="/projects" className="inline-flex min-h-11 items-center gap-3 underline-offset-4 transition-colors hover:text-[#4F6B7A] hover:underline">
               <span aria-hidden="true">←</span> {copy.back}
             </Link>
-            <span className="text-end">{copy.selected}</span>
+            <span className="flex min-h-11 items-center text-end">{copy.selected}</span>
           </div>
           <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
             <h1 className={(locale === "ar"
@@ -123,7 +130,7 @@ export default function CityEdgeCaseStudy({ project }: { project: WebsiteProject
               : "font-[var(--font-display)] text-[clamp(4rem,13vw,12rem)] uppercase leading-[.85] tracking-[-.035em]") + " max-w-full break-words"}>
               {translated.title}
             </h1>
-            <span className="text-[10px] tracking-[.16em] text-white/75 lg:pb-2">{translated.location}</span>
+            <span className="text-[10px] font-medium tracking-[.16em] text-neutral-700 lg:pb-2">{translated.location}</span>
           </div>
         </div>
       </section>
@@ -162,25 +169,37 @@ export default function CityEdgeCaseStudy({ project }: { project: WebsiteProject
             </p>
           </div>
         </div>
-        {board && (
-          <figure className="mt-16 md:mt-24">
-            <a href={board.image_url} target="_blank" rel="noopener noreferrer" aria-label={copy.openImage} className="group block border border-neutral-300 bg-[#f6f5f2] p-2 transition-colors hover:border-neutral-500 md:p-4">
-              <Image
-                src={board.image_url}
-                alt={localizedText(board.alt_text, locale) || copy.board}
-                width={1349}
-                height={1024}
-                unoptimized
-                sizes="100vw"
-                className="h-auto w-full object-contain"
-              />
-            </a>
-            <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-4 text-[10px] leading-5 tracking-[.08em] text-neutral-500">
-              <span>{localizedText(board.caption, locale) || copy.board}</span>
-              <span>{copy.openImage} ↗</span>
-            </figcaption>
-          </figure>
-        )}
+        <figure className="-mx-6 mt-16 sm:-mx-8 md:-mx-10 md:mt-24 lg:-mx-16">
+          <a
+            href={project.image_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={copy.exteriorAlt}
+            className="group relative block h-[65svh] min-h-[440px] overflow-hidden bg-neutral-300 md:h-[85svh]"
+          >
+            <Image
+              src={project.image_url}
+              alt={copy.exteriorAlt}
+              fill
+              unoptimized
+              sizes="100vw"
+              className="object-cover object-center transition-transform duration-700 motion-safe:group-hover:scale-[1.015]"
+            />
+          </a>
+          <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 text-[10px] font-normal tracking-[.08em] text-neutral-600 sm:px-8 md:px-10 lg:px-16">
+            <span>{copy.exteriorCaption}</span>
+            {board && (
+              <a
+                href={board.image_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-9 items-center border-b border-neutral-500/60 transition-colors hover:text-[#4F6B7A]"
+              >
+                {copy.openImage} ↗
+              </a>
+            )}
+          </figcaption>
+        </figure>
         {programBody && (
           <div className="mt-16 grid gap-8 border-t border-neutral-300 pt-7 lg:grid-cols-[.34fr_1.66fr] lg:gap-12">
             <p className="text-[10px] tracking-[.16em] text-neutral-500">{copy.strategyLabel}</p>

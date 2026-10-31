@@ -4,6 +4,7 @@ import Link from "next/link";
 import Reveal from "@/components/animations/Reveal";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { serviceSlugs, servicesContent, type ServiceSlug } from "@/components/services/ServicesHero";
+import GoldenRatio from "@/components/home/GoldenRatio";
 
 const navigationCopy = {
   en: { back: "All services", capabilities: "Capabilities", for: "Who it is for", deliverables: "Typical deliverables", examples: "Where it can lead", specialist: "Specialist offering", cta: "Start a conversation" },
@@ -33,6 +34,8 @@ export default function ServiceDetail({ slug }: { slug: ServiceSlug }) {
           </div>
         </div>
       </section>
+
+      {slug === "architecture-interiors" && <GoldenRatio />}
 
       <section className="border-t border-neutral-300 px-6 py-20 sm:px-8 md:px-10 md:py-28 lg:px-16">
         <div className="mx-auto grid max-w-[1600px] gap-14 lg:grid-cols-[120px_minmax(0,1fr)] lg:gap-10">
